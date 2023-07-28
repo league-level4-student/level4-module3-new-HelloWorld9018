@@ -22,8 +22,23 @@ public class SpiesOnATrain {
      * statements.
      */
     String findIntel(LinkedList<TrainCar> train, String[] clues) {
-
-        return "";
+    	String spy = null;
+    	boolean found = false;
+    	Node<TrainCar> passenger = train.getHead();
+    	while(passenger != null && !found) {
+    		String info = passenger.getValue().questionPassenger();
+    		for(int i = 0; i<clues.length; i++) {
+    				System.out.println(clues[i].toString());
+    				//analyze info to determine if I can eliminate suspect (2nd name in  string info)
+    				//compare passenger witness testimony to clues
+    		}
+    	
+    		TrainCar trainCar = new TrainCar(passenger.getValue().toString(), "");
+    		trainCar.questionPassenger();
+    		passenger = passenger.getNext();
+    	}
+    	spy = passenger.getValue().toString();
+        return spy;
 
     }
 

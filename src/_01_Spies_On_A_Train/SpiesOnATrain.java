@@ -27,16 +27,32 @@ public class SpiesOnATrain {
     	Node<TrainCar> passenger = train.getHead();
     	while(passenger != null && !found) {
     		String info = passenger.getValue().questionPassenger();
-    		for(int i = 0; i<clues.length; i++) {
-    				System.out.println(clues[i].toString());
+    		TrainCar trainCar = new TrainCar(passenger.getValue().toString(), info);
+    		StringBuilder name = new StringBuilder();
+    		StringBuilder evidence = new StringBuilder();
+    		name.append(info);
+    		evidence.append(info);
+    		
+    		String name1 = name.substring(name.lastIndexOf("saw")+4, name.indexOf(" ", name.lastIndexOf("saw")+4));
+    		String evidence1 = evidence.substring(evidence.indexOf(" ", evidence.indexOf(name1))+1);
+    		
+    		System.out.println(name1 + ", " + evidence1);
+    		
+    		for(int k = 0; k<clues.length; k++) {
+    				//System.out.println(clues[k].toString());
+    				/*if(info.) {
+    					
+    				}*/
     				//analyze info to determine if I can eliminate suspect (2nd name in  string info)
     				//compare passenger witness testimony to clues
+    		
+    		
+    		
     		}
-    	
-    		TrainCar trainCar = new TrainCar(passenger.getValue().toString(), "");
-    		trainCar.questionPassenger();
     		passenger = passenger.getNext();
-    	}
+    		}
+    		
+    	
     	spy = passenger.getValue().toString();
         return spy;
 

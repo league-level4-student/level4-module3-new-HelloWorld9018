@@ -33,7 +33,21 @@ public class BinaryTreeDemo {
      */
 
     public static void main(String[] args) {
-
+    	BinaryTree<String> tree = new BinaryTree<String>();
+    	tree.insert("Hello");
+    	tree.insert("Hi");
+    	tree.insert("GAR");
+    	tree.insert("Aa");
+    	tree.insert("a");
+    	tree.printHorizontal();
+    	tree.search("Hi");
+    	System.out.println("FOUND VALUE: " + tree.recursiveSearch(tree.getRoot(), "Hi").getValue());
+    	
+    	tree.delete("Hi");
+    	tree.printVertical();
+    	tree.search("Hi");
+    	
+    	//completed steps 1-3 and now understand binary trees
     }
 
 }

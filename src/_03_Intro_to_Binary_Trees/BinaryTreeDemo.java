@@ -48,6 +48,22 @@ public class BinaryTreeDemo {
     	tree.search("Hi");
     	
     	//completed steps 1-3 and now understand binary trees
+    	
+    	Node<String> root = tree.getRoot();
+   
+    	toUpper(root);
+    	 
+    }
+    
+    static void toUpper (Node<String> root) {
+    	if(root == null) {
+    		return;
+    	}
+    	root.setValue(root.getValue().toUpperCase());
+    	System.out.println(root.getValue());
+    	toUpper(root.getLeft()); //depth first
+    	toUpper(root.getRight());
+    	
     }
 
 }

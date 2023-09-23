@@ -31,7 +31,29 @@ public class AVLTreeDemo {
      */
 
     public static void main(String[] args) {
-
+    	BinaryTree<String> binary = new BinaryTree<String>();
+    	AVLTree<String> avl = new AVLTree<String>();
+    	
+    	binary.insert("HELLO!");
+    	avl.insert("HELLO!");
+    	
+    	binary.insert("my");
+    	avl.insert("my");
+    	
+    	binary.insert("name");
+    	avl.insert("name");
+    	
+    	binary.insert("is");
+    	avl.insert("is");
+    	
+    	binary.insert("Lily");
+    	avl.insert("Lily");
+    	
+    	binary.insert("Cova...");
+    	avl.insert("Cova...");
+    	
+    	binary.insert(":)");
+    	avl.insert(":)");
     }
 
 }

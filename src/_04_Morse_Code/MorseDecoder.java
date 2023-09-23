@@ -1,6 +1,11 @@
 package _04_Morse_Code;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 import _03_Intro_to_Binary_Trees.BinaryTree;
+import _03_Intro_to_Binary_Trees.Node;
 
 public class MorseDecoder {
 
@@ -10,8 +15,12 @@ public class MorseDecoder {
 
         MorseDecoder md = new MorseDecoder();
         md.initialize();
-        md.decode();
-
+        md.decode("-.-- --- ..- .- .-. . .- -- .- --.. .. -. --.");
+        
+        Scanner scans = new Scanner(System.in);
+        System.out.println("Enter a message in morse code: (seperate each letter with a space) \n");
+        String input = scans.nextLine() + " ";
+        md.decode(input);
     }
 
     public void initialize() {
@@ -63,8 +72,41 @@ public class MorseDecoder {
      * english alphabet.
      * 
      */
-    void decode() {
-        String morseCode = "-.-- --- ..- .- .-. . .- -- .- --.. .. -. --.";
+    void decode(String morseCode) {
+        //morseCode = "-.-- --- ..- .- .-. . .- -- .- --.. .. -. --.";
+        //45
+        morseCode = morseCode + " ";
+        ArrayList<String> stringBits = new ArrayList<>();
+        stringBits.add("");
+        int lastIndex = 0;
+        for(int i = 0; i<morseCode.lastIndexOf(" "); i++) {
+        
+        stringBits.add(morseCode.substring(i , morseCode.indexOf(" ", i+1)));
+       // System.out.println("previousSpace: " + i+lastIndex + ", next space: " + morseCode.indexOf(" ", lastIndex+i+1));
+        i = morseCode.indexOf(" ", i+1);
+        }
+        //NEED TO FIX ERROR
+        
+        for(int i = 0; i<stringBits.size(); i++){
+        	System.out.println(stringBits.get(i));
+        }
+        
+        //System.out.println(mcTree.getRoot().getValue().getDecoded());
+        //mcTree.search(stringBits.get(0));
+        //mcTree.search(value);
+        //mcTree.morseCode.
+        String decoded = "";
+        for(int i=0; i<stringBits.size(); i++) {
+        	MorseCode coded = new MorseCode(stringBits.get(i));
+        	Node<MorseCode> codedNode = mcTree.search(coded);
+        	decoded += codedNode.getValue().getDecoded();
+        }
+        
+        System.out.println(decoded);
+        
+        
+        
+        
     }
 
 }

@@ -15,9 +15,41 @@ public class HowManyAreSmallerThanMe {
      */
 
     public int howManyAreSmallerThanMe(AVLTree<Integer> avlTree, int me) {
-
-        return 0;
+    	
+    	AVLNode<Integer> givenNode = new AVLNode<Integer>(me);
+    	
+    	AVLNode<Integer> currentNode = avlTree.getRoot();
+    	System.out.println(me);
+    	int counter = 0;
+    	//if on right branch
+    	if(avlTree.getRoot().getValue() < givenNode.getValue()) {
+    		setCurrentToSmallest();
+    		while(currentNode!=givenNode) {
+    			//currentNode.getRight until it currentNode = givenNode
+    			counter++;
+    		}
+    	}
+    	//if on left branch
+    	
+    	// I actually don't know what's going on nvm. Restart later.
+    	currentNode = givenNode;
+    	while(currentNode!=null) {
+    	currentNode = currentNode.getLeft();
+    	counter++;
+    	}
+    	System.out.println(counter);
+    	//System.out.println(currentNode == startingNode);
+    	
+    	/*while() {
+    		
+    	}*/
+        return counter;
 
     }
+
+	private void setCurrentToSmallest() {
+		// TODO Auto-generated method stub
+		//getting smallest value in avlTree
+	}
 
 }

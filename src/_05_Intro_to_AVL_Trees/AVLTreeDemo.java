@@ -54,6 +54,15 @@ public class AVLTreeDemo {
     	
     	binary.insert(":)");
     	avl.insert(":)");
+    	
+    	binary.printVertical();
+    	avl.printVertical();
+    	
+    	binary.delete("Cova...");
+    	avl.delete("Cova...");
+    	
+    	binary.printVertical();
+    	avl.printVertical();
     }
 
 }

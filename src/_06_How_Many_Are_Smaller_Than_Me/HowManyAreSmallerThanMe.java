@@ -1,5 +1,6 @@
 package _06_How_Many_Are_Smaller_Than_Me;
 
+import _00_Intro_to_Linked_Lists.Node;
 import _05_Intro_to_AVL_Trees.AVLNode;
 import _05_Intro_to_AVL_Trees.AVLTree;
 
@@ -13,43 +14,62 @@ public class HowManyAreSmallerThanMe {
      * You may want to create a helper method to search through the AVLTree and
      * count iteratively or recursively.
      */
-
+	//AVLNode<Integer> targetNode;
+	int counter;
+	int me;
     public int howManyAreSmallerThanMe(AVLTree<Integer> avlTree, int me) {
     	
-    	AVLNode<Integer> givenNode = new AVLNode<Integer>(me);
+    	//targetNode = new AVLNode<Integer>(me);
     	
     	AVLNode<Integer> currentNode = avlTree.getRoot();
-    	System.out.println(me);
-    	int counter = 0;
-    	//if on right branch
-    	if(avlTree.getRoot().getValue() < givenNode.getValue()) {
-    		setCurrentToSmallest();
-    		while(currentNode!=givenNode) {
-    			//currentNode.getRight until it currentNode = givenNode
-    			counter++;
-    		}
-    	}
-    	//if on left branch
+    	System.out.println("target number: " + me);
+    	 counter = 0;
+    	 this.me = me;
+    	 //goes all the way down, and increases count on the way up. Stops when the branch splits, and does the same process.
+    	//try for loop with search method?
+    	 System.out.println("start: " + currentNode.getValue());
+    	recursiveCounter(currentNode);
     	
-    	// I actually don't know what's going on nvm. Restart later.
-    	currentNode = givenNode;
-    	while(currentNode!=null) {
-    	currentNode = currentNode.getLeft();
-    	counter++;
-    	}
-    	System.out.println(counter);
-    	//System.out.println(currentNode == startingNode);
-    	
-    	/*while() {
-    		
-    	}*/
+    	//isn't exiting the recursive function... why?
+    	System.out.println("counter: " + counter);
         return counter;
 
     }
 
-	private void setCurrentToSmallest() {
+	private void recursiveCounter(AVLNode currentNode) {
 		// TODO Auto-generated method stub
-		//getting smallest value in avlTree
+	
+		
+	/*	if(currentNode.getLeft().getValue()!=null) {
+			counter++;
+			System.out.println("Left: " + currentNode.getValue() + ", counter: " + counter);
+		recursiveCounter(currentNode.getLeft());
+		}
+		if(currentNode.getRight().getValue()!=null) {
+			counter++;
+			//why isn't this running?
+			System.out.println("Right: " + currentNode.getValue()+ ", counter: " + counter);
+		recursiveCounter(currentNode.getRight());
+		}
+		//Once it reaches the left end point, node goes back up
+		if(currentNode.getLeft().getValue() == null || 
+				currentNode.getRight().getValue() == null) {
+			System.out.println("starting the process of going back up");
+		}*/
+		if(currentNode == null) {
+			return;
+		}
+		
+		//going to the left
+		recursiveCounter(currentNode.getLeft());
+		if((int)currentNode.getValue() >= me) {
+			return;
+		}
+		counter++;
+		recursiveCounter(currentNode.getRight());
+		
+		
+		//LOTS OF PROBLEMS I NEED TO FIX! It shouldn't be this complicated
 	}
 
 }
